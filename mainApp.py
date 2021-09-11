@@ -197,7 +197,7 @@ class Canteen_Bill:
         Label(F6, text="        ",bg=bg_color).grid(row=0, column=2, padx=50, pady=0)  # adding empty space
 
 
-        Total_btn= Button(F6,text="Total", bg="white",fg="black",width=8,bd=7,font=("arial 14 bold")).grid(row=0, column=3, padx=10, pady=0)
+        Total_btn= Button(F6,text="Total",command=self.total, bg="white",fg="black",width=8,bd=7,font=("arial 14 bold")).grid(row=0, column=3, padx=10, pady=0)
         
         GBill_btn= Button(F6, text="Generate Bill", bg="white",width=10, fg="black",bd=7, font=("arial 14 bold")).grid(row=0, column=4, padx=10, pady=0)
 
@@ -205,6 +205,43 @@ class Canteen_Bill:
 
         Exit_btn=Button(F6, text="Exit", bg="white", fg="black",width=8,bd=7, font=("arial 14 bold")).grid(row=0, column=6, padx=10, pady=0)
 
+    def total(self):
+        self.total_bill=(
+                (self.pop_corn.get()*60)+
+                (self.noodle.get()*60)+
+                (self.muffin.get()*60)+
+                (self.samosa.get()*60)+
+                (self.burger.get()*60)+
+                (self.veg_sandwich.get()*60)+
+                (self.fried_egg.get()*60)+
+                (self.sel_roti.get()*60)+
+                (self.chatamari.get()*60)+
+                (self.dahi_chiura.get()*60)+
+
+                (self.water1l.get()*100)+
+                (self.orange_juice.get()*100)+
+                (self.coca_cola.get()*100)+
+                (self.ice_cream.get()*100)+
+                (self.red_bull.get()*100)+
+                (self.black_forest.get()*100)+
+                (self.cappuccino.get()*100)+
+                (self.milk_shake.get()*100)+
+                (self.milk_tea.get()*100)+
+                (self.sweet_lassi.get()*100)+
+
+                (self.dal_bhat.get()*100)+
+                (self.momo.get()*100)+
+                (self.thukpa.get()*100)+
+                (self.choila.get()*100)+
+                (self.sekuwa.get()*100)+
+                (self.sukuti.get()*100)+
+                (self.yomari.get()*100)+
+                (self.dhido.get()*100)+
+                (self.thakali_khana.get()*100)+
+                (self.aalu_tama.get()*100)
+
+        )
+        self.total_price.set(str(self.total_bill))
 
 root = Tk()
 obj = Canteen_Bill(root)
