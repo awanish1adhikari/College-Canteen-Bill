@@ -1,4 +1,5 @@
 from tkinter import *
+import math,random
 class Canteen_Bill:
     def __init__(self,root):
         self.root = root
@@ -15,6 +16,9 @@ class Canteen_Bill:
         self.name=StringVar()
         self.phone=StringVar()
         self.bill=StringVar()
+        x=random.randint(1000,9000)
+        self.bill.set(str(x))
+        self.search_bill=StringVar()
         
         name_lbl=Label(F1, text="Name: ", bg=bg_color, fg="white", font=("times new roman",18,"bold")).grid(row=0, column=0, padx=20, pady=5)
         name_txt=Entry(F1,width=20, bd=7, relief=SUNKEN,textvariable=self.name ,font="arial 15").grid(row=0,column=1,pady=5,padx=10)
@@ -175,10 +179,10 @@ class Canteen_Bill:
 
         F5=Frame(self.root, bd=10, relief=GROOVE)
         F5.place(x=1040, y=90, width=350, height=530)
-        bill_title = Label(F5, text="Bill Area", font="arial 14 bold", bd=7, relief=GROOVE).pack(fill=X)
+        bill_title = Label(F5, text="Bill Area", font="arial 15 bold", bd=7, relief=GROOVE).pack(fill=X)
 
         scroll_y = Scrollbar(F5, orient=VERTICAL)
-        self.txtarea = Text(F5,font=16, yscrollcommand=scroll_y.set)
+        self.txtarea = Text(F5, yscrollcommand=scroll_y.set)
         scroll_y.pack(side=RIGHT, fill=Y)
         scroll_y.config(command=self.txtarea.yview)
         self.txtarea.pack(fill=BOTH, expand=1)
@@ -199,12 +203,14 @@ class Canteen_Bill:
 
         Total_btn= Button(F6,text="Total",command=self.total, bg="white",fg="black",width=8,bd=7,font=("arial 14 bold")).grid(row=0, column=3, padx=10, pady=0)
         
-        GBill_btn= Button(F6, text="Generate Bill", bg="white",width=10, fg="black",bd=7, font=("arial 14 bold")).grid(row=0, column=4, padx=10, pady=0)
+        GBill_btn= Button(F6, text="Generate Bill",command=self.welcome_bill, bg="white",width=10, fg="black",bd=7, font=("arial 14 bold")).grid(row=0, column=4, padx=10, pady=0)
 
         Clear_btn = Button(F6, text="Clear", bg="white", fg="black",width=8,bd=7,  font=("arial 14 bold")).grid(row=0, column=5, padx=10, pady=0)
 
         Exit_btn=Button(F6, text="Exit", bg="white", fg="black",width=8,bd=7, font=("arial 14 bold")).grid(row=0, column=6, padx=10, pady=0)
-
+        
+        self.welcome_bill()
+    
     def total(self):
         self.total_bill=(
                 (self.pop_corn.get()*60)+
@@ -242,6 +248,17 @@ class Canteen_Bill:
 
         )
         self.total_price.set(str(self.total_bill))
+
+    def welcome_bill(self):
+            self.txtarea.delete('1.0',END)
+            self.txtarea.insert(END,"\tSoftwarica Canteen Bill")
+            self.txtarea.insert(END,f"\nBill Number: ")
+            self.txtarea.insert(END,f"\nName: ")
+            self.txtarea.insert(END,f"\nPhone Number :")
+    
+    def bill_area(self):
+            pass
+
 
 root = Tk()
 obj = Canteen_Bill(root)
