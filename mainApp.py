@@ -252,11 +252,15 @@ class Canteen_Bill:
     def welcome_bill(self):
             self.txtarea.delete('1.0',END)
             self.txtarea.insert(END,"\tSoftwarica Canteen Bill")
-            self.txtarea.insert(END,f"\nBill Number: ")
-            self.txtarea.insert(END,f"\nName: ")
-            self.txtarea.insert(END,f"\nPhone Number :")
+            self.txtarea.insert(END,f"\n Bill Number:{self.bill.get()} ")
+            self.txtarea.insert(END,f"\n Name: {self.name.get()}")
+            self.txtarea.insert(END,f"\n =====================================")
+            self.txtarea.insert(END,"\n Products \t    QTY \t \tPrice")
+            self.txtarea.insert(END,f"\n =====================================")
+            self.txtarea.insert(END,f"\n Phone Number:{self.phone.get()} ")
     
     def bill_area(self):
+            self.welcome_bill()
             pass
 
 
