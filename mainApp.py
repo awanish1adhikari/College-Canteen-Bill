@@ -1,5 +1,6 @@
 from tkinter import *
-import math,random
+import math,random,os
+from tkinter import messagebox
 class Canteen_Bill:
     def __init__(self,root):
         self.root = root
@@ -8,7 +9,7 @@ class Canteen_Bill:
         self.root.iconbitmap('bill.ico')
         bg_color = "#143875"
 
- # Frame1 Customer Detail Frame 
+        # Frame1 Customer Detail Frame 
         F1 = LabelFrame(self.root,bd=10,relief=GROOVE,text="Customer Details",font=("times new roman",15,"bold"),fg="gold",bg=bg_color)
         F1.place(x=0, y=0, relwidth=1)
 
@@ -16,7 +17,7 @@ class Canteen_Bill:
         self.name=StringVar()
         self.phone=StringVar()
         self.bill=StringVar()
-        x=random.randint(1000,9000)
+        x=random.randint(0000,9000)
         self.bill.set(str(x))
         self.search_bill=StringVar()
         
@@ -31,7 +32,7 @@ class Canteen_Bill:
         
         search_btn=Button(F1,text="Search",width=10,bd=7,relief=GROOVE, font="arial 12 bold").grid(row=0, column=6,padx=10,pady=0)
 
-#  Frame2  Snack items
+        # Frame2  Snack items
         F2=LabelFrame(self.root,bd=10,relief=GROOVE,text="Snacks",font=("times new roman",15,"bold"),fg="gold",bg=bg_color)
         F2.place(x=5, y=90,width=325,height=530)
 
@@ -78,7 +79,7 @@ class Canteen_Bill:
         f2_txt10=Entry(F2,width=8,textvariable=self.dahi_chiura, font=("times new roman",16,"bold"),bd=5,relief=SUNKEN).grid(row=9,column=1,padx=10,pady=7)
         
        
-# Frame 3 Refreshments
+        # Frame 3 Refreshments
 
         F3=LabelFrame(self.root,bd=10,relief=GROOVE,text="Refreshments",font=("times new roman",15,"bold"),fg="gold",bg=bg_color)
         F3.place(x=335, y=90,width=375,height=530)
@@ -203,66 +204,163 @@ class Canteen_Bill:
 
         Total_btn= Button(F6,text="Total",command=self.total, bg="white",fg="black",width=8,bd=7,font=("arial 14 bold")).grid(row=0, column=3, padx=10, pady=0)
         
-        GBill_btn= Button(F6, text="Generate Bill",command=self.welcome_bill, bg="white",width=10, fg="black",bd=7, font=("arial 14 bold")).grid(row=0, column=4, padx=10, pady=0)
+        Generate_Bill_btn= Button(F6, text="Generate Bill",command=self.bill_area, bg="white",width=10, fg="black",bd=7, font=("arial 14 bold")).grid(row=0, column=4, padx=10, pady=0)
 
         Clear_btn = Button(F6, text="Clear", bg="white", fg="black",width=8,bd=7,  font=("arial 14 bold")).grid(row=0, column=5, padx=10, pady=0)
 
         Exit_btn=Button(F6, text="Exit", bg="white", fg="black",width=8,bd=7, font=("arial 14 bold")).grid(row=0, column=6, padx=10, pady=0)
-        
         self.welcome_bill()
     
-    def total(self):
-        self.total_bill=(
-                (self.pop_corn.get()*60)+
-                (self.noodle.get()*60)+
-                (self.muffin.get()*60)+
-                (self.samosa.get()*60)+
-                (self.burger.get()*60)+
-                (self.veg_sandwich.get()*60)+
-                (self.fried_egg.get()*60)+
-                (self.sel_roti.get()*60)+
-                (self.chatamari.get()*60)+
-                (self.dahi_chiura.get()*60)+
+    def total(self):   
+        self.pop_corn_price=self.pop_corn.get()*60
+        self.noodle_price=self.noodle.get()*60
+        self.muffin_price=self.muffin.get()*60
+        self.samosa_price=self.samosa.get()*60
+        self.burger_price=self.burger.get()*60
+        self.veg_sandwich_price=self.veg_sandwich.get()*60
+        self.fried_egg_price=self.fried_egg.get()*60
+        self.sel_roti_price=self.sel_roti.get()*60
+        self.chatamari_price=self.chatamari.get()*60
+        self.dahi_chiura_price=self.dahi_chiura.get()*60
 
-                (self.water1l.get()*100)+
-                (self.orange_juice.get()*100)+
-                (self.coca_cola.get()*100)+
-                (self.ice_cream.get()*100)+
-                (self.red_bull.get()*100)+
-                (self.black_forest.get()*100)+
-                (self.cappuccino.get()*100)+
-                (self.milk_shake.get()*100)+
-                (self.milk_tea.get()*100)+
-                (self.sweet_lassi.get()*100)+
+        self.water1l_price = self.water1l.get()*100
+        self.orange_juice_price = self.orange_juice.get()*100
+        self.coca_cola_price = self.coca_cola.get()*100
+        self.ice_cream_price = self.ice_cream.get()*100
+        self.red_bull_price = self.red_bull.get()*100
+        self.black_forest_price = self.black_forest.get()*100
+        self.cappuccino_price = self.cappuccino.get()*100
+        self.milk_shake_price = self.milk_shake.get()*100
+        self.milk_tea_price = self.milk_tea.get()*100
+        self.sweet_lassi_price = self.sweet_lassi.get()*100
 
-                (self.dal_bhat.get()*100)+
-                (self.momo.get()*100)+
-                (self.thukpa.get()*100)+
-                (self.choila.get()*100)+
-                (self.sekuwa.get()*100)+
-                (self.sukuti.get()*100)+
-                (self.yomari.get()*100)+
-                (self.dhido.get()*100)+
-                (self.thakali_khana.get()*100)+
-                (self.aalu_tama.get()*100)
+        self.dal_bhat_price = self.dal_bhat.get()*100 
+        self.momo_price = self.momo.get()*100 
+        self.thukpa_price = self.thukpa.get()*100
+        self.choila_price = self.choila.get()*100
+        self.sekuwa_price = self.sekuwa.get()*100
+        self.sukuti_price = self.sukuti.get()*100
+        self.yomari_price = self.yomari.get()*100
+        self.dhido_price = self.dhido.get()*100
+        self.thakali_khana_price = self.thakali_khana.get()*100
+        self.aalu_tama_price = self.aalu_tama.get()*100
 
+    
+        self.total_bill=float(       
+                self.pop_corn_price +
+                self.noodle_price +
+                self.muffin_price +
+                self.samosa_price +
+                self.burger_price +
+                self.veg_sandwich_price +
+                self.fried_egg_price +
+                self.sel_roti_price +
+                self.chatamari_price +
+                self.dahi_chiura_price +
+
+                self.water1l_price +
+                self.orange_juice_price +
+                self.coca_cola_price +
+                self.ice_cream_price +
+                self.red_bull_price +
+                self.black_forest_price +
+                self.cappuccino_price +
+                self.milk_shake_price +
+                self.milk_tea_price  +
+                self.sweet_lassi_price +
+
+                self.dal_bhat_price +
+                self.momo_price +
+                self.thukpa_price +
+                self.choila_price +
+                self.sekuwa_price +
+                self.sukuti_price +
+                self.yomari_price +
+                self.dhido_price +
+                self.thakali_khana_price +
+                self.aalu_tama_price
         )
-        self.total_price.set(str(self.total_bill))
+
+        
+        self.total_price.set("NRs. "+str(self.total_bill))
 
     def welcome_bill(self):
             self.txtarea.delete('1.0',END)
             self.txtarea.insert(END,"\tSoftwarica Canteen Bill")
             self.txtarea.insert(END,f"\n Bill Number:{self.bill.get()} ")
-            self.txtarea.insert(END,f"\n Name: {self.name.get()}")
-            self.txtarea.insert(END,f"\n =====================================")
-            self.txtarea.insert(END,"\n Products \t    QTY \t \tPrice")
-            self.txtarea.insert(END,f"\n =====================================")
+            self.txtarea.insert(END,f"\n Name: {self.name.get()}") 
             self.txtarea.insert(END,f"\n Phone Number:{self.phone.get()} ")
+            self.txtarea.insert(END,f"\n =====================================")
+            self.txtarea.insert(END,"\n Products\t\tQTY \t\tPrice")
+            self.txtarea.insert(END,f"\n =====================================")
+            
     
     def bill_area(self):
             self.welcome_bill()
-            pass
+            if self.pop_corn.get() !=0:
+                    self.txtarea.insert(END,f"\n Pop Corn\t\t{self.pop_corn.get()}\t\t{self.pop_corn_price}")
+            if self.noodle.get()!=0:
+                    self.txtarea.insert(END,f"\n Noodle\t\t{self.noodle.get()}\t\t{self.noodle_price}")
+            if self.muffin.get()!=0:
+                    self.txtarea.insert(END,f"\n Muffin\t\t{self.muffin.get()}\t\t{self.muffin_price}")
+            if self.samosa.get()!=0:
+                    self.txtarea.insert(END,f"\n Samosa\t\t{self.samosa.get()}\t\t{self.samosa_price}")
+            if self.burger.get()!=0:
+                    self.txtarea.insert(END,f"\n Burger\t\t{self.burger.get()}\t\t{self.burger_price}")
+            if self.veg_sandwich.get()!=0:
+                    self.txtarea.insert(END,f"\n Veg Sandwich\t\t{self.veg_sandwich.get()}\t\t{self.veg_sandwich_price}")
+            if self.fried_egg.get()!=0:
+                    self.txtarea.insert(END,f"\n Fried Egg\t\t{self.fried_egg.get()}\t\t{self.fried_egg_price}")
+            if self.sel_roti.get()!=0:
+                    self.txtarea.insert(END,f"\n Sel Roti\t\t{self.sel_roti.get()}\t\t{self.sel_roti_price}")
+            if self.chatamari.get()!=0:
+                    self.txtarea.insert(END,f"\n Chatamari\t\t{self.chatamari.get()}\t\t{self.chatamari_price}")
+            if self.dahi_chiura.get()!=0:
+                    self.txtarea.insert(END,f"\n Dahi Chiura\t\t{self.dahi_chiura.get()}\t\t{self.dahi_chiura_price}")
 
+            if self.water1l.get()!=0:
+                    self.txtarea.insert(END,f"\n Water 1L\t\t{self.water1l.get()}\t\t{self.water1l_price}")
+            if self.orange_juice.get()!=0:
+                    self.txtarea.insert(END,f"\n Orange Juice\t\t{self.orange_juice.get()}\t\t{self.orange_juice_price}")
+            if self.coca_cola.get()!=0:
+                    self.txtarea.insert(END,f"\n Coca~Cola\t\t{self.coca_cola.get()}\t\t{self.coca_cola_price}")
+            if self.ice_cream.get()!=0:
+                    self.txtarea.insert(END,f"\n Ice Cream\t\t{self.ice_cream.get()}\t\t{self.ice_cream_price}")
+            if self.red_bull.get()!=0:
+                    self.txtarea.insert(END,f"\n Red Bull\t\t{self.red_bull.get()}\t\t{self.red_bull_price}")
+            if self.black_forest.get()!=0:
+                    self.txtarea.insert(END,f"\n Black Forest\t\t{self.black_forest.get()}\t\t{self.black_forest_price}")
+            if self.cappuccino.get()!=0:
+                    self.txtarea.insert(END,f"\n Cappucino\t\t{self.cappuccino.get()}\t\t{self.cappuccino_price}")
+            if self.milk_shake.get()!=0:
+                    self.txtarea.insert(END,f"\n Milk Shake\t\t{self.milk_shake.get()}\t\t{self.milk_shake_price}")
+            if self.milk_tea.get()!=0:
+                    self.txtarea.insert(END,f"\n Milk Tea\t\t{self.milk_tea.get()}\t\t{self.milk_tea_price}")
+            if self.sweet_lassi.get()!=0:
+                    self.txtarea.insert(END,f"\n Sweet Lassi\t\t{self.sweet_lassi.get()}\t\t{self.sweet_lassi_price}")
+
+            if self.dal_bhat.get()!=0:
+                    self.txtarea.insert(END,f"\n Dal Bhat\t\t{self.dal_bhat.get()}\t\t{self.dal_bhat_price}")
+            if self.momo.get()!=0:
+                    self.txtarea.insert(END,f"\n Momo\t\t{self.momo.get()}\t\t{self.momo_price}")
+            if self.thukpa.get()!=0:
+                    self.txtarea.insert(END,f"\n Thukpa\t\t{self.thukpa.get()}\t\t{self.thukpa_price}")
+            if self.choila.get()!=0:
+                    self.txtarea.insert(END,f"\n Choila\t\t{self.choila.get()}\t\t{self.choila_price}")
+            if self.sekuwa.get()!=0:
+                    self.txtarea.insert(END,f"\n Sekuwa\t\t{self.sekuwa.get()}\t\t{self.sekuwa_price}")
+            if self.sukuti.get()!=0:
+                    self.txtarea.insert(END,f"\n Sukuti\t\t{self.sukuti.get()}\t\t{self.sukuti_price}")
+            if self.yomari.get()!=0:
+                    self.txtarea.insert(END,f"\n Yomari\t\t{self.yomari.get()}\t\t{self.yomari_price}")
+            if self.dhido.get()!=0:
+                    self.txtarea.insert(END,f"\n Dhido\t\t{self.dhido.get()}\t\t{self.dhido_price}")
+            if self.thakali_khana.get()!=0: 
+                    self.txtarea.insert(END,f"\n Thakali Khana\t\t{self.thakali_khana.get()}\t\t{self.thakali_khana_price}")
+            if self.aalu_tama.get()!=0:
+                    self.txtarea.insert(END,f"\n Aalu Tama\t\t{self.aalu_tama.get()}\t\t{self.aalu_tama_price}")
+            
+            
 
 root = Tk()
 obj = Canteen_Bill(root)
