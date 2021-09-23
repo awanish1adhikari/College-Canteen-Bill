@@ -296,72 +296,77 @@ class Canteen_Bill:
             
     
     def bill_area(self):
-            self.welcome_bill()
-            if self.pop_corn.get() !=0:
+            if self.name.get()== "" or self.phone.get()=="":
+                    messagebox.showerror("Error", "Customer details are must")
+            elif self.total_price.get() =="NRs. 0.0" :
+                    messagebox.showerror("Error", "No items selected")
+            else:
+                self.welcome_bill()
+                if self.pop_corn.get() !=0:
                     self.txtarea.insert(END,f"\n Pop Corn\t\t{self.pop_corn.get()}\t\t{self.pop_corn_price}")
-            if self.noodle.get()!=0:
+                if self.noodle.get()!=0:
                     self.txtarea.insert(END,f"\n Noodle\t\t{self.noodle.get()}\t\t{self.noodle_price}")
-            if self.muffin.get()!=0:
+                if self.muffin.get()!=0:
                     self.txtarea.insert(END,f"\n Muffin\t\t{self.muffin.get()}\t\t{self.muffin_price}")
-            if self.samosa.get()!=0:
+                if self.samosa.get()!=0:
                     self.txtarea.insert(END,f"\n Samosa\t\t{self.samosa.get()}\t\t{self.samosa_price}")
-            if self.burger.get()!=0:
+                if self.burger.get()!=0:
                     self.txtarea.insert(END,f"\n Burger\t\t{self.burger.get()}\t\t{self.burger_price}")
-            if self.veg_sandwich.get()!=0:
+                if self.veg_sandwich.get()!=0:
                     self.txtarea.insert(END,f"\n Veg Sandwich\t\t{self.veg_sandwich.get()}\t\t{self.veg_sandwich_price}")
-            if self.fried_egg.get()!=0:
+                if self.fried_egg.get()!=0:
                     self.txtarea.insert(END,f"\n Fried Egg\t\t{self.fried_egg.get()}\t\t{self.fried_egg_price}")
-            if self.sel_roti.get()!=0:
+                if self.sel_roti.get()!=0:
                     self.txtarea.insert(END,f"\n Sel Roti\t\t{self.sel_roti.get()}\t\t{self.sel_roti_price}")
-            if self.chatamari.get()!=0:
+                if self.chatamari.get()!=0:
                     self.txtarea.insert(END,f"\n Chatamari\t\t{self.chatamari.get()}\t\t{self.chatamari_price}")
-            if self.dahi_chiura.get()!=0:
+                if self.dahi_chiura.get()!=0:
                     self.txtarea.insert(END,f"\n Dahi Chiura\t\t{self.dahi_chiura.get()}\t\t{self.dahi_chiura_price}")
 
-            if self.water1l.get()!=0:
+                if self.water1l.get()!=0:
                     self.txtarea.insert(END,f"\n Water 1L\t\t{self.water1l.get()}\t\t{self.water1l_price}")
-            if self.orange_juice.get()!=0:
+                if self.orange_juice.get()!=0:
                     self.txtarea.insert(END,f"\n Orange Juice\t\t{self.orange_juice.get()}\t\t{self.orange_juice_price}")
-            if self.coca_cola.get()!=0:
+                if self.coca_cola.get()!=0:
                     self.txtarea.insert(END,f"\n Coca~Cola\t\t{self.coca_cola.get()}\t\t{self.coca_cola_price}")
-            if self.ice_cream.get()!=0:
+                if self.ice_cream.get()!=0:
                     self.txtarea.insert(END,f"\n Ice Cream\t\t{self.ice_cream.get()}\t\t{self.ice_cream_price}")
-            if self.red_bull.get()!=0:
+                if self.red_bull.get()!=0:
                     self.txtarea.insert(END,f"\n Red Bull\t\t{self.red_bull.get()}\t\t{self.red_bull_price}")
-            if self.black_forest.get()!=0:
+                if self.black_forest.get()!=0:
                     self.txtarea.insert(END,f"\n Black Forest\t\t{self.black_forest.get()}\t\t{self.black_forest_price}")
-            if self.cappuccino.get()!=0:
+                if self.cappuccino.get()!=0:
                     self.txtarea.insert(END,f"\n Cappucino\t\t{self.cappuccino.get()}\t\t{self.cappuccino_price}")
-            if self.milk_shake.get()!=0:
+                if self.milk_shake.get()!=0:
                     self.txtarea.insert(END,f"\n Milk Shake\t\t{self.milk_shake.get()}\t\t{self.milk_shake_price}")
-            if self.milk_tea.get()!=0:
+                if self.milk_tea.get()!=0:
                     self.txtarea.insert(END,f"\n Milk Tea\t\t{self.milk_tea.get()}\t\t{self.milk_tea_price}")
-            if self.sweet_lassi.get()!=0:
+                if self.sweet_lassi.get()!=0:
                     self.txtarea.insert(END,f"\n Sweet Lassi\t\t{self.sweet_lassi.get()}\t\t{self.sweet_lassi_price}")
 
-            if self.dal_bhat.get()!=0:
+                if self.dal_bhat.get()!=0:
                     self.txtarea.insert(END,f"\n Dal Bhat\t\t{self.dal_bhat.get()}\t\t{self.dal_bhat_price}")
-            if self.momo.get()!=0:
+                if self.momo.get()!=0:
                     self.txtarea.insert(END,f"\n Momo\t\t{self.momo.get()}\t\t{self.momo_price}")
-            if self.thukpa.get()!=0:
+                if self.thukpa.get()!=0:
                     self.txtarea.insert(END,f"\n Thukpa\t\t{self.thukpa.get()}\t\t{self.thukpa_price}")
-            if self.choila.get()!=0:
+                if self.choila.get()!=0:
                     self.txtarea.insert(END,f"\n Choila\t\t{self.choila.get()}\t\t{self.choila_price}")
-            if self.sekuwa.get()!=0:
+                if self.sekuwa.get()!=0:
                     self.txtarea.insert(END,f"\n Sekuwa\t\t{self.sekuwa.get()}\t\t{self.sekuwa_price}")
-            if self.sukuti.get()!=0:
+                if self.sukuti.get()!=0:
                     self.txtarea.insert(END,f"\n Sukuti\t\t{self.sukuti.get()}\t\t{self.sukuti_price}")
-            if self.yomari.get()!=0:
+                if self.yomari.get()!=0:
                     self.txtarea.insert(END,f"\n Yomari\t\t{self.yomari.get()}\t\t{self.yomari_price}")
-            if self.dhido.get()!=0:
+                if self.dhido.get()!=0:
                     self.txtarea.insert(END,f"\n Dhido\t\t{self.dhido.get()}\t\t{self.dhido_price}")
-            if self.thakali_khana.get()!=0: 
+                if self.thakali_khana.get()!=0: 
                     self.txtarea.insert(END,f"\n Thakali Khana\t\t{self.thakali_khana.get()}\t\t{self.thakali_khana_price}")
-            if self.aalu_tama.get()!=0:
+                if self.aalu_tama.get()!=0:
                     self.txtarea.insert(END,f"\n Aalu Tama\t\t{self.aalu_tama.get()}\t\t{self.aalu_tama_price}")
-            self.txtarea.insert(END,f"\n =====================================")
-            self.txtarea.insert(END,f"\n -------------------------------------")
-            self.txtarea.insert(END,f"\n Total Bill : \t\tRs. {str(self.total_bill)} ")
+                self.txtarea.insert(END,f"\n =====================================")
+                self.txtarea.insert(END,f"\n -------------------------------------")
+                self.txtarea.insert(END,f"\n Total Bill : \t\tRs. {str(self.total_bill)} ")
             
 
 root = Tk()
