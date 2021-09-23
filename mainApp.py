@@ -359,7 +359,9 @@ class Canteen_Bill:
                     self.txtarea.insert(END,f"\n Thakali Khana\t\t{self.thakali_khana.get()}\t\t{self.thakali_khana_price}")
             if self.aalu_tama.get()!=0:
                     self.txtarea.insert(END,f"\n Aalu Tama\t\t{self.aalu_tama.get()}\t\t{self.aalu_tama_price}")
-            
+            self.txtarea.insert(END,f"\n =====================================")
+            self.txtarea.insert(END,f"\n -------------------------------------")
+            self.txtarea.insert(END,f"\n Total Bill : \t\tRs. {str(self.total_bill)} ")
             
 
 root = Tk()
