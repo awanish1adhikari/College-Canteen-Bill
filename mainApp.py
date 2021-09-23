@@ -364,10 +364,20 @@ class Canteen_Bill:
                     self.txtarea.insert(END,f"\n Thakali Khana\t\t{self.thakali_khana.get()}\t\t{self.thakali_khana_price}")
                 if self.aalu_tama.get()!=0:
                     self.txtarea.insert(END,f"\n Aalu Tama\t\t{self.aalu_tama.get()}\t\t{self.aalu_tama_price}")
-                self.txtarea.insert(END,f"\n =====================================")
                 self.txtarea.insert(END,f"\n -------------------------------------")
                 self.txtarea.insert(END,f"\n Total Bill : \t\tRs. {str(self.total_bill)} ")
-            
+                
+                self.save_bill()
+    def save_bill(self):
+        op = messagebox.askyesno("Save Bill","Do you want to save the Bill?")
+        if op > 0:
+            self.bill_data = self.txtarea.get('1.0',END)
+            save_txt = open("bills data/"+ str(self.bill.get())+".txt","w")
+            save_txt.write(self.bill_data)
+            save_txt.close()
+        else:
+            return
+    
 
 root = Tk()
 obj = Canteen_Bill(root)
