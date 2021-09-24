@@ -206,9 +206,9 @@ class Canteen_Bill:
         
         Generate_Bill_btn= Button(F6, text="Generate Bill",command=self.bill_area, bg="white",width=10, fg="black",bd=7, font=("arial 14 bold")).grid(row=0, column=4, padx=10, pady=0)
 
-        Clear_btn = Button(F6, text="Clear", bg="white", fg="black",width=8,bd=7,  font=("arial 14 bold")).grid(row=0, column=5, padx=10, pady=0)
+        Clear_btn = Button(F6, text="Clear",command=self.clear, bg="white", fg="black",width=8,bd=7,  font=("arial 14 bold")).grid(row=0, column=5, padx=10, pady=0)
 
-        Exit_btn=Button(F6, text="Exit", bg="white", fg="black",width=8,bd=7, font=("arial 14 bold")).grid(row=0, column=6, padx=10, pady=0)
+        Exit_btn=Button(F6, text="Exit",command = self.exit, bg="white", fg="black",width=8,bd=7, font=("arial 14 bold")).grid(row=0, column=6, padx=10, pady=0)
         self.welcome_bill()
     
     def total(self):   
@@ -375,6 +375,54 @@ class Canteen_Bill:
             save_txt = open("bills data/"+ str(self.bill.get())+".txt","w")
             save_txt.write(self.bill_data)
             save_txt.close()
+        else:
+            return
+    
+    def clear(self):
+        op = messagebox.askyesno("Clear", "Do you want to clear the data? ")
+        if op > 0:
+                self.pop_corn.set(0)
+                self.noodle.set(0)
+                self.muffin.set(0)
+                self.samosa.set(0)
+                self.burger.set(0)
+                self.veg_sandwich.set(0)
+                self.fried_egg.set(0)
+                self.sel_roti.set(0)
+                self.chatamari.set(0)
+                self.dahi_chiura.set(0)
+
+                self.water1l.set(0)
+                self.orange_juice.set(0)
+                self.coca_cola.set(0)
+                self.ice_cream.set(0)
+                self.red_bull.set(0)
+                self.black_forest.set(0)
+                self.cappuccino.set(0)
+                self.milk_shake.set(0)
+                self.milk_tea.set(0)
+                self.sweet_lassi.set(0)
+
+                self.dal_bhat.set(0)
+                self.momo.set(0)
+                self.thukpa.set(0)
+                self.choila.set(0)
+                self.sekuwa.set(0)
+                self.sukuti.set(0)
+                self.yomari.set(0)
+                self.dhido.set(0)
+                self.thakali_khana.set(0)
+                self.aalu_tama.set(0)
+                
+                self.name.set("") 
+                self.phone.set("")
+                self.total_price.set(0.00)
+            
+    
+    def exit(self):
+        op = messagebox.askyesno("Exit", "Do you want to exit? ")
+        if op > 0:
+            self.root.destroy()
         else:
             return
     
