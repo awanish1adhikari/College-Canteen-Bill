@@ -153,19 +153,19 @@ class Canteen_Bill:
         f4_lbl3=Label(F4,text="Thukpa",font=("times new roman",15,"bold"),bg=bg_color,fg="lightgreen").grid(row=2, column=0,padx=10,pady=7,sticky="w")
         f4_txt3=Entry(F4,width=8, textvariable=self.thukpa, font=("times new roman",15,"bold"),bd=5,relief=SUNKEN).grid(row=2,column=1,padx=10,pady=7)
 
-        f4_lbl4=Label(F4,text="Choila",font=("times new roman",15,"bold"),bg=bg_color,fg="lightgreen").grid(row=3, column=0,padx=10,pady=7,sticky="w")
+        f4_lbl4=Label(F4,text="Duck Choila",font=("times new roman",15,"bold"),bg=bg_color,fg="lightgreen").grid(row=3, column=0,padx=10,pady=7,sticky="w")
         f4_txt4=Entry(F4,width=8, textvariable=self.choila ,font=("times new roman",15,"bold"),bd=5,relief=SUNKEN).grid(row=3,column=1,padx=10,pady=7)
 
         f4_lbl5=Label(F4,text="Sekuwa",font=("times new roman",15,"bold"),bg=bg_color,fg="lightgreen").grid(row=4, column=0,padx=10,pady=7,sticky="w")
         f4_txt5=Entry(F4,width=8, textvariable=self.sekuwa, font=("times new roman",15,"bold"),bd=5,relief=SUNKEN).grid(row=4,column=1,padx=10,pady=7)
 
-        f4_lbl6=Label(F4,text="Sukuti",font=("times new roman",15,"bold"),bg=bg_color,fg="lightgreen").grid(row=5, column=0,padx=10,pady=7,sticky="w")
+        f4_lbl6=Label(F4,text="Sukuti Sandheko",font=("times new roman",15,"bold"),bg=bg_color,fg="lightgreen").grid(row=5, column=0,padx=10,pady=7,sticky="w")
         f4_txt6=Entry(F4,width=8, textvariable=self.sukuti, font=("times new roman",15,"bold"),bd=5,relief=SUNKEN).grid(row=5,column=1,padx=10,pady=7)
  
-        f4_lbl7=Label(F4,text="Yomari",font=("times new roman",15,"bold"),bg=bg_color,fg="lightgreen").grid(row=6, column=0,padx=10,pady=7,sticky="w")
+        f4_lbl7=Label(F4,text="Khuwa Yomari",font=("times new roman",15,"bold"),bg=bg_color,fg="lightgreen").grid(row=6, column=0,padx=10,pady=7,sticky="w")
         f4_txt7=Entry(F4,width=8, textvariable=self.yomari, font=("times new roman",15,"bold"),bd=5,relief=SUNKEN).grid(row=6,column=1,padx=10,pady=7)
 
-        f4_lbl8=Label(F4,text="Dhido",font=("times new roman",15,"bold"),bg=bg_color,fg="lightgreen").grid(row=7, column=0,padx=10,pady=7,sticky="w")
+        f4_lbl8=Label(F4,text="Veg Dhido",font=("times new roman",15,"bold"),bg=bg_color,fg="lightgreen").grid(row=7, column=0,padx=10,pady=7,sticky="w")
         f4_txt8=Entry(F4,width=8, textvariable=self.dhido, font=("times new roman",15,"bold"),bd=5,relief=SUNKEN).grid(row=7,column=1,padx=10,pady=7)
 
         f4_lbl9=Label(F4,text="Thakali Khana",font=("times new roman",15,"bold"),bg=bg_color,fg="lightgreen").grid(row=8, column=0,padx=10,pady=7,sticky="w")
@@ -212,38 +212,38 @@ class Canteen_Bill:
         self.welcome_bill()
     
     def total(self):   
-        self.pop_corn_price=self.pop_corn.get()*60
-        self.noodle_price=self.noodle.get()*60
-        self.muffin_price=self.muffin.get()*60
+        self.pop_corn_price=self.pop_corn.get()*100
+        self.noodle_price=self.noodle.get()*300
+        self.muffin_price=self.muffin.get()*50
         self.samosa_price=self.samosa.get()*60
-        self.burger_price=self.burger.get()*60
-        self.veg_sandwich_price=self.veg_sandwich.get()*60
-        self.fried_egg_price=self.fried_egg.get()*60
+        self.burger_price=self.burger.get()*180
+        self.veg_sandwich_price=self.veg_sandwich.get()*185
+        self.fried_egg_price=self.fried_egg.get()*40
         self.sel_roti_price=self.sel_roti.get()*60
-        self.chatamari_price=self.chatamari.get()*60
-        self.dahi_chiura_price=self.dahi_chiura.get()*60
+        self.chatamari_price=self.chatamari.get()*120
+        self.dahi_chiura_price=self.dahi_chiura.get()*80
 
-        self.water1l_price = self.water1l.get()*100
-        self.orange_juice_price = self.orange_juice.get()*100
-        self.coca_cola_price = self.coca_cola.get()*100
+        self.water1l_price = self.water1l.get()*30
+        self.orange_juice_price = self.orange_juice.get()*80
+        self.coca_cola_price = self.coca_cola.get()*60
         self.ice_cream_price = self.ice_cream.get()*100
-        self.red_bull_price = self.red_bull.get()*100
-        self.black_forest_price = self.black_forest.get()*100
-        self.cappuccino_price = self.cappuccino.get()*100
-        self.milk_shake_price = self.milk_shake.get()*100
-        self.milk_tea_price = self.milk_tea.get()*100
+        self.red_bull_price = self.red_bull.get()*120
+        self.black_forest_price = self.black_forest.get()*80
+        self.cappuccino_price = self.cappuccino.get()*90
+        self.milk_shake_price = self.milk_shake.get()*70
+        self.milk_tea_price = self.milk_tea.get()*25
         self.sweet_lassi_price = self.sweet_lassi.get()*100
 
-        self.dal_bhat_price = self.dal_bhat.get()*100 
-        self.momo_price = self.momo.get()*100 
-        self.thukpa_price = self.thukpa.get()*100
-        self.choila_price = self.choila.get()*100
+        self.dal_bhat_price = self.dal_bhat.get()*190 
+        self.momo_price = self.momo.get()*120 
+        self.thukpa_price = self.thukpa.get()*130
+        self.choila_price = self.choila.get()*210
         self.sekuwa_price = self.sekuwa.get()*100
-        self.sukuti_price = self.sukuti.get()*100
-        self.yomari_price = self.yomari.get()*100
-        self.dhido_price = self.dhido.get()*100
-        self.thakali_khana_price = self.thakali_khana.get()*100
-        self.aalu_tama_price = self.aalu_tama.get()*100
+        self.sukuti_price = self.sukuti.get()*420
+        self.yomari_price = self.yomari.get()*120
+        self.dhido_price = self.dhido.get()*280
+        self.thakali_khana_price = self.thakali_khana.get()*300
+        self.aalu_tama_price = self.aalu_tama.get()*190
 
     
         self.total_bill=float(       
