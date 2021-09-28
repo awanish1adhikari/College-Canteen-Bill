@@ -369,15 +369,7 @@ class Canteen_Bill:
                 self.txtarea.insert(END,f"\n Total Bill : \t\tRs. {str(self.total_bill)} ")
                 
                 self.db()
-    # def save_bill(self):
-    #     op = messagebox.askyesno("Save Bill","Do you want to save the Bill?")
-    #     if op > 0:
-    #         self.bill_data = self.txtarea.get('1.0',END)
-    #         save_txt = open("bills data/"+ str(self.bill.get())+".txt","w")
-    #         save_txt.write(self.bill_data)
-    #         save_txt.close()
-    #     else:
-    #         return
+
     
     def clear(self):
         op = messagebox.askyesno("Clear", "Do you want to clear the data? ")
