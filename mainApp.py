@@ -432,8 +432,8 @@ class Canteen_Bill:
     def db(self):
         conn = sqlite3.connect('data.db')
         c = conn.cursor()
-        c.execute("CREATE TABLE IF NOT EXISTS customer_data(bill TEXT, name TEXT, total TEXT)")
-        c.execute('INSERT INTO customer_data (bill,name,total) VALUES (?,?,?)', (self.bill.get(), self.name.get(), self.total_price.get()))
+        c.execute("CREATE TABLE IF NOT EXISTS customer_data(bill TEXT, name TEXT,phone TEXT, total TEXT)")
+        c.execute('INSERT INTO customer_data (bill,name,phone,total) VALUES (?,?,?,?)', (self.bill.get(), self.name.get(),self.phone.get(), self.total_price.get()))
         conn.commit()
         conn.close()
         
