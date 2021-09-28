@@ -7,7 +7,7 @@ class Canteen_Bill:
         self.root = root
         self.root.geometry("1400x720+0+0")
         self.root.title("Billing Software for Softwarica's Canteen")
-        self.root.iconbitmap('bill.ico')
+        #self.root.iconbitmap('bill.ico')
         bg_color = "#143875"
 
         # Frame1 Customer Detail Frame 
