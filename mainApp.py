@@ -1,4 +1,5 @@
 from tkinter import *
+import sqlite3
 import math,random,os
 from tkinter import messagebox
 class Canteen_Bill:
@@ -367,16 +368,16 @@ class Canteen_Bill:
                 self.txtarea.insert(END,f"\n -------------------------------------")
                 self.txtarea.insert(END,f"\n Total Bill : \t\tRs. {str(self.total_bill)} ")
                 
-                self.save_bill()
-    def save_bill(self):
-        op = messagebox.askyesno("Save Bill","Do you want to save the Bill?")
-        if op > 0:
-            self.bill_data = self.txtarea.get('1.0',END)
-            save_txt = open("bills data/"+ str(self.bill.get())+".txt","w")
-            save_txt.write(self.bill_data)
-            save_txt.close()
-        else:
-            return
+                self.db()
+    # def save_bill(self):
+    #     op = messagebox.askyesno("Save Bill","Do you want to save the Bill?")
+    #     if op > 0:
+    #         self.bill_data = self.txtarea.get('1.0',END)
+    #         save_txt = open("bills data/"+ str(self.bill.get())+".txt","w")
+    #         save_txt.write(self.bill_data)
+    #         save_txt.close()
+    #     else:
+    #         return
     
     def clear(self):
         op = messagebox.askyesno("Clear", "Do you want to clear the data? ")
@@ -426,7 +427,17 @@ class Canteen_Bill:
         else:
             return
     
-
+    
+    
+    def db(self):
+        conn = sqlite3.connect('data.db')
+        c = conn.cursor()
+        c.execute("CREATE TABLE IF NOT EXISTS customer_data(bill TEXT, name TEXT, total TEXT)")
+        c.execute('INSERT INTO customer_data (bill,name,total) VALUES (?,?,?)', (self.bill.get(), self.name.get(), self.total_price.get()))
+        conn.commit()
+        conn.close()
+        
+    
 root = Tk()
 obj = Canteen_Bill(root)
 root.mainloop()
